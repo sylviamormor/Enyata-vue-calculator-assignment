@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="main">
+        <h2>{{Title}}</h2>
+        <input v-model="result" type="">
+        <div>
+            <button @click.prevent="buttonValue('7')">7</button>
+            <button @click.prevent="buttonValue('8')">8</button>
+            <button @click.prevent="buttonValue('9')">9</button>
+            <button @click.prevent="clearAll">AC</button>
+    <div>
+        <button @click.prevent="buttonValue('4')">4</button>
+        <button @click.prevent="buttonValue('5')">5</button>
+        <button @click.prevent="buttonValue('6')">6</button>
+        <button @click.prevent="buttonValue('/')">/</button>
+        <div>
+            <button @click.prevent="buttonValue('1')">1</button>
+            <button @click.prevent="buttonValue('2')">2</button>
+            <button @click.prevent="buttonValue('3')">3</button>
+            <button @click.prevent="buttonValue('-')">-</button>
+        <div>
+            <button @click.prevent="buttonValue('0')">0</button>
+            <button @click.prevent="buttonValue('.')">.</button>
+            <button @click.prevent="calculations()">=</button>
+            <button @click.prevent="buttonValue('+')">+</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+     let app = Vue.createApp({
+        data: function(){ 
+            return{
+                Title: "Calculator", 
+                result: " "
+                
+            }
+        },
+        methods: {
+            clearAll(){
+               this.result=" "
+            },
+            buttonValue(values){
+                this.result += values
+
+            },
+            calculations(){
+                try{this.result= eval(this.result)}
+                catch(error){
+                    this.result = "error"
+                }
+            }
+        }
+
+     })
+     app.mount("#app")
+    </script>
+
+
+</body>
+</html>
